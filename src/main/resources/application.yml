@@ -1,0 +1,6 @@
+spring :
+  profiles :
+    active :
+      - codes
+server :
+    port : @service.port@
