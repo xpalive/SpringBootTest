@@ -21,12 +21,12 @@ public class HelloController {
     @Autowired
     private Codes codes;
 
-    @GetMapping("world")
+    @GetMapping("/world")
     @ResponseBody
     public String world(){
         Map<String,String> valuesMap = new WeakHashMap<>();
         String envName = codes.getEnv().getName();
-        String port = codes.getEnvironment().getProperty("");
+        String port = codes.getEnvironment().getProperty("server.port");
         valuesMap.put("envName", envName);
         valuesMap.put("port", port);
         StrSubstitutor sub = new StrSubstitutor(valuesMap);

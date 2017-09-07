@@ -36,12 +36,25 @@
             </activation>
         </profile>
         <profile>
-            <id>dev2</id>
+            <id>test1</id>
             <properties>
-                <project.env>dev2</project.env>
+                <project.env>test1</project.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>test2</id>
+            <properties>
+                <project.env>test2</project.env>
+            </properties>
+        </profile>
+        <profile>
+            <id>test3</id>
+            <properties>
+                <project.env>test3</project.env>
             </properties>
         </profile>
     </profiles>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,7 +77,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>spring-boot-test</finalName>
+        <finalName>spring-boot-${project.env}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -80,6 +93,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
